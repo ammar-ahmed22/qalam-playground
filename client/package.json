@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@lezer/generator": "^1.7.1",
+    "@lezer/highlight": "^1.2.1",
+    "@lezer/lr": "^1.4.2",
+    "@monaco-editor/react": "^4.6.0",
     "@nextui-org/react": "^2.4.8",
     "@nextui-org/system": "^2.2.6",
     "@nextui-org/theme": "^2.2.11",
@@ -11,10 +15,14 @@
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
     "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
+    "@types/node": "^22.9.1",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "@uiw/codemirror-extensions-langs": "^4.23.6",
+    "@uiw/react-codemirror": "^4.23.6",
+    "codemirror": "^6.0.1",
     "framer-motion": "^11.11.17",
+    "lezer": "^0.13.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
@@ -24,7 +32,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "GENERATE_SOURCEMAP=false && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
