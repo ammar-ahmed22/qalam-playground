@@ -48,7 +48,8 @@ export function useLazyFetch<D = any, E = any>(
 
   const fetch = (fetchConfig: AxiosRequestConfig) => {
     const mergedConfig = { ...config, ...fetchConfig };
-    console.log(mergedConfig);
+    setData(undefined);
+    setError(undefined);
     setLoading(true);
     axios
       .request(mergedConfig)

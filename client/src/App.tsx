@@ -1,5 +1,5 @@
 // UI Components
-import { Card, Button, Checkbox } from "@nextui-org/react";
+import { Card, Button, Checkbox, Kbd } from "@nextui-org/react";
 import {
   PlayIcon,
   CommandLineIcon,
@@ -27,8 +27,8 @@ export default function App() {
   const [code, setCode] = useState(defaultCode);
   const [runs, setRuns] = useState<Run[]>([]);
   const [onlyLatest, setOnlyLatest] = useState(false);
-  // TODO handle errors and loading
-  const [runCode, { data }] = useLazyFetch<ProcessOutput>({
+
+  const [runCode, { data, loading, error }] = useLazyFetch<ProcessOutput>({
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -55,7 +55,33 @@ export default function App() {
         return copy;
       });
     }
-  }, [data]);
+    if (error) {
+      setRuns((prev) => {
+        let copy = [...prev];
+        copy.unshift({
+          receivedAt: new Date(),
+          output: {
+            stderr: error.message,
+          },
+        });
+        return copy;
+      });
+    }
+  }, [data, error]);
+
+  useEffect(() => {
+    const handleKeydown = (ev: KeyboardEvent) => {
+      if (ev.metaKey && ev.key === "Enter") {
+        ev.preventDefault();
+        if (!loading) handleRun();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeydown);
+    return () => {
+      window.removeEventListener("keydown", handleKeydown);
+    };
+  }, [loading, handleRun]);
 
   return (
     <div className="h-screen p-4 flex flex-col gap-4">
@@ -74,11 +100,12 @@ export default function App() {
               <span className="font-bold">Qalam Playground</span>
             </div>
             <Button
-              endContent={<PlayIcon className="size-4" />}
+              endContent={<p>⌘↵</p>}
               variant="faded"
               color="success"
               size="sm"
               onPress={handleRun}
+              isLoading={loading}
             >
               Run
             </Button>
