@@ -65,7 +65,7 @@ fn unprocessable(_: &Request) -> Json<ErrorResponse> {
     });
 }
 
-fn cors_midlleware() -> Cors {
+fn cors_middleware() -> Cors {
     let allowed_origins = AllowedOrigins::some_exact(&["http://localhost:3000"]);
     CorsOptions {
         allowed_origins,
@@ -86,5 +86,5 @@ fn rocket() -> _ {
     rocket::build()
         .mount("/", routes![health, run_code])
         .register("/", catchers![not_found, unprocessable])
-        .attach(cors_midlleware())
+        .attach(cors_middleware())
 }
