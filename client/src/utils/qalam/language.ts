@@ -77,7 +77,7 @@ Block { "{" statement* "}" }
   While { "baynama" }
   Self { "nafs" }
   Super { "ulya "}
-  Name { @asciiLetter+ }
+  Name { @asciiLetter (@asciiLetter | @digit | "_")* }
   Kitab { "kitab" }
   Ibn { "ibn" }
   Number { @digit+ }
@@ -88,6 +88,7 @@ Block { "{" statement* "}" }
 }
 
 @skip { whitespace }
+@detectDelim
 `;
 
 export const parser = buildParser(grammar).configure({

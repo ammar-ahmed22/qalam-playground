@@ -1,10 +1,6 @@
 // UI Components
-import { Card, Button, Checkbox, Kbd } from "@nextui-org/react";
-import {
-  PlayIcon,
-  CommandLineIcon,
-  TrashIcon,
-} from "@heroicons/react/24/solid";
+import { Card, Button, Checkbox } from "@nextui-org/react";
+import { CommandLineIcon, TrashIcon } from "@heroicons/react/24/solid";
 
 // Types
 import type { Run, ProcessOutput } from "./utils/types";
@@ -71,7 +67,7 @@ export default function App() {
 
   useEffect(() => {
     const handleKeydown = (ev: KeyboardEvent) => {
-      if (ev.metaKey && ev.key === "Enter") {
+      if (ev.metaKey && ev.key === "r") {
         ev.preventDefault();
         if (!loading) handleRun();
       }
@@ -81,7 +77,8 @@ export default function App() {
     return () => {
       window.removeEventListener("keydown", handleKeydown);
     };
-  }, [loading, handleRun]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading]);
 
   return (
     <div className="h-screen p-4 flex flex-col gap-4">
@@ -100,7 +97,7 @@ export default function App() {
               <span className="font-bold">Qalam Playground</span>
             </div>
             <Button
-              endContent={<p>⌘↵</p>}
+              endContent={<p>⌘ R</p>}
               variant="faded"
               color="success"
               size="sm"
@@ -126,7 +123,7 @@ export default function App() {
               isSelected={onlyLatest}
               onValueChange={setOnlyLatest}
             >
-              Show Only latest
+              Show Only Latest
             </Checkbox>
             <Button
               size="sm"
