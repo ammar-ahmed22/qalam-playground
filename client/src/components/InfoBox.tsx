@@ -16,10 +16,16 @@ export default function InfoBox<E extends React.ElementType>({
   ...props
 }: InfoBoxProps<E>) {
   const Component = as || "div";
+  const bgs = {
+    success: "bg-success-200/20",
+    danger: "bg-danger-200/20",
+    warning: "bg-warning-200/20",
+    default: "bg-default-200/20",
+  };
   return (
     <Component
       className={twMerge(
-        `bg-${status}-200/20 py-2 px-4 rounded-md border-l-8 border-${status}`,
+        `${bgs[status]} py-2 px-4 rounded-md border-l-8 border-${status}`,
         className,
       )}
       {...props}

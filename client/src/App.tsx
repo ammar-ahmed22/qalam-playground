@@ -1,6 +1,10 @@
 // UI Components
-import { Card, Button } from "@nextui-org/react";
-import { PlayIcon, CommandLineIcon } from "@heroicons/react/24/solid";
+import { Card, Button, Checkbox } from "@nextui-org/react";
+import {
+  PlayIcon,
+  CommandLineIcon,
+  TrashIcon,
+} from "@heroicons/react/24/solid";
 
 // Types
 import type { Run, ProcessOutput } from "./utils/types";
@@ -13,12 +17,16 @@ import { useLazyFetch } from "./hooks/fetch";
 import Editor from "./components/Editor";
 import Runs from "./components/Runs";
 
+// Assets
+import logo from "./assets/QalamLogo.png";
+
 // Constants
 const defaultCode = `shai name = "Ammar";\nqul("Assalamu alaikum, " + name + "!");`;
 
 export default function App() {
   const [code, setCode] = useState(defaultCode);
   const [runs, setRuns] = useState<Run[]>([]);
+  const [onlyLatest, setOnlyLatest] = useState(false);
   // TODO handle errors and loading
   const [runCode, { data }] = useLazyFetch<ProcessOutput>({
     method: "POST",
@@ -53,7 +61,18 @@ export default function App() {
     <div className="h-screen p-4 flex flex-col gap-4">
       <div className="grid grid-cols-2 gap-4">
         <Card className="p-4 h-full gap-4">
-          <div className="flex justify-start">
+          <div className="flex justify-between items-center">
+            <div className="flex gap-2 items-center">
+              <div className="size-8">
+                <img
+                  src={logo}
+                  alt="Example"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+
+              <span className="font-bold">Qalam Playground</span>
+            </div>
             <Button
               endContent={<PlayIcon className="size-4" />}
               variant="faded"
@@ -71,7 +90,27 @@ export default function App() {
             <CommandLineIcon className="size-5" />
             <span>Result</span>
           </h2>
-          <Runs runs={runs} onlyLatest />
+          <div className="flex justify-end gap-2">
+            <Checkbox
+              size="sm"
+              classNames={{
+                label: "font-bold text-tiny",
+              }}
+              isSelected={onlyLatest}
+              onValueChange={setOnlyLatest}
+            >
+              Show Only latest
+            </Checkbox>
+            <Button
+              size="sm"
+              variant="light"
+              startContent={<TrashIcon className="size-4" />}
+              onPress={() => setRuns([])}
+            >
+              Clear History
+            </Button>
+          </div>
+          <Runs runs={runs} onlyLatest={onlyLatest} />
         </Card>
       </div>
     </div>

@@ -11,6 +11,10 @@ export type RunsProps = {
 
 const formatString = "@ hh:mm:ss:SS aa yyyy/MM/dd";
 
+type StatusColor = "success" | "danger" | "warning";
+
+type StatusDisplay = "Success" | "Error" | "Runtime Error";
+
 export default function Runs({ runs, onlyLatest }: RunsProps) {
   const genKey = (run: Run, idx: number) => {
     return `qalampg-run-result-${run.receivedAt.getTime()}-${idx}`;
@@ -23,24 +27,24 @@ export default function Runs({ runs, onlyLatest }: RunsProps) {
     setKeys(new Set(runs.map((r, i) => genKey(r, i))));
   }, [runs]);
 
-  const status = (output: ProcessOutput): "success" | "danger" | "warning" => {
+  const status = (output: ProcessOutput): [StatusColor, StatusDisplay] => {
     const { stderr, stdout } = output;
     if (!stderr && !stdout) {
-      return "success";
+      return ["success", "Success"];
     }
 
     if (!stderr && stdout) {
-      return "success";
+      return ["success", "Success"];
     }
 
     if (stderr && !stdout) {
-      return "danger";
+      return ["danger", "Error"];
     }
 
     if (stderr && stdout) {
-      return "warning";
+      return ["warning", "Runtime Error"];
     }
-    return "warning";
+    return ["warning", "Runtime Error"];
   };
 
   if (runs.length === 0) {
@@ -51,12 +55,13 @@ export default function Runs({ runs, onlyLatest }: RunsProps) {
     const [run] = runs;
     const { receivedAt, output } = run;
     const { stderr, stdout } = output;
+    const [color, statusDisplay] = status(output);
     return (
       <div className="border-medium border-divider px-4 rounded-medium ">
         <div className="py-2">
           <div className="flex py-4 gap-3 items-center">
-            <Chip color={status(output)} variant="flat" size="sm">
-              Run
+            <Chip color={color} variant="flat" size="sm">
+              {statusDisplay}
             </Chip>
             <span className="text-default-500 text-sm">
               {format(receivedAt, formatString)}
@@ -82,14 +87,15 @@ export default function Runs({ runs, onlyLatest }: RunsProps) {
       {runs.map((run, idx) => {
         const { receivedAt, output } = run;
         const { stdout, stderr } = output;
+        const [color, statusDisplay] = status(output);
         return (
           <AccordionItem
             key={genKey(run, idx)}
             subtitle={format(receivedAt, formatString)}
             className="py-2"
             startContent={
-              <Chip color={status(output)} variant="flat" size="sm">
-                Run
+              <Chip color={color} variant="flat" size="sm">
+                {statusDisplay}
               </Chip>
             }
           >
