@@ -2,7 +2,7 @@ import React from "react";
 import { NextUIProvider } from "@nextui-org/system";
 import { ThemeProvider } from "../context/theme";
 
-export default function Providers({ children } : { children: React.ReactNode }) {
+export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <NextUIProvider>
       <ThemeProvider
@@ -12,5 +12,5 @@ export default function Providers({ children } : { children: React.ReactNode }) 
         {children}
       </ThemeProvider>
     </NextUIProvider>
-  )
+  );
 }
