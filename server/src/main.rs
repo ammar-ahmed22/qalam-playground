@@ -4,7 +4,7 @@ use rocket::serde::{Serialize, Deserialize};
 use rocket::serde::json::Json;
 use rocket::Request;
 use std::process::Command;
-
+use rocket_cors::{ AllowedOrigins, Cors, CorsOptions };
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Code {
@@ -60,7 +60,24 @@ fn unprocessable(_: &Request) -> Json<ErrorResponse> {
     })
 }
 
+fn cors_midlleware() -> Cors {
+    let allowed_origins = AllowedOrigins::some_exact(&["http://localhost:3000"]);
+    CorsOptions {
+        allowed_origins,
+        allowed_methods: ["GET", "POST", "PUT", "DELETE"]
+            .iter()
+            .map(|s| s.parse().unwrap())
+            .collect(),
+        allowed_headers: rocket_cors::AllowedHeaders::some(&["Authorization", "Content-Type"]),
+        allow_credentials: true,
+        ..Default::default()
+    }.to_cors().expect("Error generating CORS middleware")
+}
+
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/", routes![health, run_code]).register("/", catchers![not_found, unprocessable])
+    rocket::build()
+        .mount("/", routes![health, run_code])
+        .register("/", catchers![not_found, unprocessable])
+        .attach(cors_midlleware())
 }
