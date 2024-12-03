@@ -15,7 +15,7 @@ const theme = createTheme({
     gutterForeground: "hsl(var(--qalampg-default-400))",
   },
   styles: [
-    { tag: t.comment, color: "#ff0000" },
+    { tag: t.comment, color: "hsl(var(--qalampg-default-500))" },
     { tag: t.variableName, color: "hsl(var(--qalampg-danger-600))" },
     { tag: t.propertyName, color: "hsl(var(--qalampg-danger-600))" },
     { tag: t.definitionKeyword, color: "hsl(var(--qalampg-secondary-600))" },

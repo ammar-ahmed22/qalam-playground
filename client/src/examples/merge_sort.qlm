@@ -1,0 +1,68 @@
+// Helper function to create an array of random integers
+amal random_arr(length, mini, maxi) {
+  shai res = [];
+  tawaf(shai i = 0; i < length; i++) {
+    push(res, random_int(mini, maxi));
+  }
+  radd res;
+} 
+
+shai length = 10;
+shai mini = -20;
+shai maxi = 20;
+shai arr = random_arr(length, mini, maxi);
+qul("Random array:");
+qul(arr);
+
+amal merge(left, right) {
+  shai l = 0;
+  shai r = 0;
+  shai res = [];
+
+  baynama(l < len(left) && r < len(right)) {
+    itha(left[l] < right[r]) {
+      push(res, left[l]);
+      l++;
+    } illa {
+      push(res, right[r]);
+      r++;
+    }
+  }
+
+  baynama(l < len(left)) {
+    push(res, left[l]);
+    l++;
+  }
+
+  baynama(r < len(right)) {
+    push(res, right[r]);
+    r++;
+  }
+
+  radd res;
+}
+
+amal merge_sort(arr) {
+  itha (len(arr) <= 1) {
+    radd arr;
+  }
+
+  shai m = floor(len(arr) / 2);
+  shai left = [];
+  shai right = [];
+  tawaf(shai i = 0; i < len(arr); i++) {
+    itha(i < m) {
+      push(left, arr[i]);
+    } illa {
+      push(right, arr[i]);
+    }
+  }
+
+  shai sorted_left = merge_sort(left);
+  shai sorted_right = merge_sort(right);
+  radd merge(sorted_left, sorted_right);
+}
+
+shai sorted = merge_sort(arr);
+qul("Sorted array:");
+qul(sorted);

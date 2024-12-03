@@ -1,3 +1,6 @@
 /// <reference types="react-scripts" />
 
-declare module "*.grammar" {}
+declare module '!!raw-loader!*' {
+  const content: string;
+  export default content;
+}

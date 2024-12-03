@@ -12,12 +12,14 @@ import { useLazyFetch } from "./hooks/fetch";
 // Components
 import Editor from "./components/Editor";
 import Runs from "./components/Runs";
+import ExampleLoader from "./components/ExampleLoader";
 
 // Assets
 import logo from "./assets/QalamLogo.png";
 
 // Constants
-const defaultCode = `shai name = "Ammar";\nqul("Assalamu alaikum, " + name + "!");`;
+// eslint-disable-next-line 
+import defaultCode from "!!raw-loader!./examples/hello.qlm";
 
 export default function App() {
   const [code, setCode] = useState(defaultCode);
@@ -81,9 +83,9 @@ export default function App() {
   }, [loading]);
 
   return (
-    <div className="h-screen p-4 flex flex-col gap-4">
+    <div className="h-screen p-4 flex flex-col gap-4 w-full">
       <div className="grid grid-cols-2 gap-4">
-        <Card className="p-4 h-full gap-4">
+        <Card className="p-4 h-full gap-4" >
           <div className="flex justify-between items-center">
             <div className="flex gap-2 items-center">
               <div className="size-8">
@@ -93,9 +95,12 @@ export default function App() {
                   className="w-full h-full object-contain"
                 />
               </div>
-
               <span className="font-bold">Qalam Playground</span>
             </div>
+            <div className="flex gap-2">
+            <ExampleLoader 
+              onSelect={setCode}
+            />
             <Button
               endContent={<p>⌘ R</p>}
               variant="faded"
@@ -106,6 +111,7 @@ export default function App() {
             >
               Run
             </Button>
+            </div>
           </div>
           <Editor value={code} onChange={setCode} height="calc(100vh - 7rem)" />
         </Card>

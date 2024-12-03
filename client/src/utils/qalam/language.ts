@@ -1,99 +1,13 @@
 import { buildParser } from "@lezer/generator";
 import { styleTags, tags } from "@lezer/highlight";
 import { LRLanguage } from "@codemirror/language";
-
-export const grammar = `
-@top Program { statement }
-
-statement { FunctionCall | VariableDeclaration | FunctionDeclaration | ClassDeclaration | ReturnStmt | IfStmt | ElseStmt | ForStmt | WhileStmt | ExprStmt }
-
-expression { LogicalExpr | FunctionCall }
-
-LogicalExpr {
-  OrExpr
-}
-
-OrExpr { AndExpr (Or AndExpr)* }
-
-AndExpr { NotExpr (And NotExpr)* }
-
-NotExpr { Not NotExpr | PrimaryExpr }
-
-ExprStmt { expression ";" }
-
-PrimaryExpr {
-  "(" expression ")" |
-  SuperReference |
-  SelfReference |
-  VariableReference |
-  Number |
-  Bool |
-  Null |
-  String
-}
-
-SuperReference { Super "." Name }
-
-SelfReference { Self "." Name }
-
-VariableDeclaration { Shai Name "=" expression ";" }
-
-VariableReference { Name ("." Name)*? }
-
-ClassDeclaration { Kitab Name (Ibn Name)? Block }
-
-FunctionDeclaration { Amal Name "(" ParameterList ")" Block }
-
-ForStmt { For "(" expression ";" expression ";" expression ")" Block }
-
-WhileStmt { While "(" expression ")" Block }
-
-FunctionCall { Name "(" ArgumentList ")" }
-
-ReturnStmt { Return expression ";" }
-
-IfStmt { If "(" expression ")" Block }
-
-ElseStmt { Else Block }
-
-ParameterList { Name ("," Name)* }
-
-ArgumentList { expression ("," expression)* }
-
-Block { "{" statement* "}" }
-
-@tokens {
-  Shai { "shai" }
-  Bool { "haqq" | "batil" }
-  Amal { "amal" }
-  If { "itha" }
-  Else { "illa" }
-  Null { "ghaib" }
-  Return { "radd" }
-  Not { "la" }
-  Or { "aw" }
-  And { "wa" }
-  For { "tawaf" }
-  While { "baynama" }
-  Self { "nafs" }
-  Super { "ulya "}
-  Name { @asciiLetter (@asciiLetter | @digit | "_")* }
-  Kitab { "kitab" }
-  Ibn { "ibn" }
-  Number { @digit+ }
-  String { '"' (!["\\\\] | "\\\\" _)* '"' }
-  whitespace { $[ \n\r\t] }
-  "{" "}" "[" "]" "(" ")"
-  @precedence { Shai, Bool, Amal, Null, Return, If, Else, String, For, While, Ibn, Kitab, Self, Super, Not, Or, And, Name }
-}
-
-@skip { whitespace }
-@detectDelim
-`;
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import grammar from "!!raw-loader!./qalam.grammar";
 
 export const parser = buildParser(grammar).configure({
   props: [
     styleTags({
+      Comment: tags.comment,
       Name: tags.variableName,
       "SuperReference/Super": tags.self,
       "SuperReference/Name": tags.propertyName,

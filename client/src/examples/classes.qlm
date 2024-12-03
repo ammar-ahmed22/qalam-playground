@@ -1,0 +1,71 @@
+// Showcasing classes and inheritance with a LibraryItem model
+// Books and movies's are both LibraryItem's so we can use inheritance
+
+// Defining the LibraryItem class
+kitab LibraryItem {
+  // Class constructor
+  khalaq(title, year) {
+    // nafs is equivalent to `this` or `self`
+    nafs.title = title;
+    nafs.year = year;
+  }
+
+  get_info() {
+    radd "Title: " + nafs.title + ", Year: " + str(nafs.year);
+  }
+}
+
+// Defining a Book
+kitab Book ibn LibraryItem {
+  khalaq(title, year, author, pages) {
+    // ulya is equivalent to `super`
+    ulya.khalaq(title, year);
+    nafs.author = author;
+    nafs.pages = pages;
+  }
+
+  // Overriding
+  get_info() {
+    radd ulya.get_info() + ", Author: " + nafs.author + ", Pages: " + str(nafs.pages);
+  }
+}
+
+// Defining a Movie
+kitab Movie ibn LibraryItem {
+  khalaq(title, year, director, run_time) {
+    ulya.khalaq(title, year);
+    nafs.director = director;
+    nafs.run_time = run_time;
+  }
+
+  // Overriding
+  get_info() {
+    radd ulya.get_info() + ", Director: " + nafs.director + ", Run time: " + str(nafs.run_time) + " hours";
+  } 
+}
+
+// Making some library items
+shai items = [];
+push(items, Book(
+  "Quran",
+  609,
+  "Allah",
+  604
+));
+push(items, Book(
+  "Sahih Bukhari",
+  846,
+  "Muhammad Al-Bukhari",
+  4000
+));
+push(items, Movie(
+  "The Message",
+  1976,
+  "Moustapha Akkad",
+  2 + (57 / 60)
+));
+
+// Getting info on all items
+tawaf(shai i = 0; i < len(items); i++) {
+  qul(items[i].get_info());
+}

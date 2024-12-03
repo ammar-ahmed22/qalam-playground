@@ -1,0 +1,63 @@
+// Helper function to print lists
+amal print_list(head) {
+  shai curr = head;
+  shai out = "";
+  baynama(curr) {
+    out += str(curr.val);
+    out += " -> ";
+    curr = curr.next;
+  }
+  out += "ghaib";
+  qul(out);
+}
+
+// Using classes for our ListNode's
+kitab ListNode {
+  khalaq(val, next) {
+    nafs.val = val;
+    nafs.next = next;
+  }
+}
+
+// Creating a list
+shai list = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ghaib))));
+qul("Basic list:");
+print_list(list);
+qul("");
+
+// Creating a list from an array
+amal list_from_arr(arr) {
+  shai list = ListNode(arr[0], ghaib);
+  shai curr = list;
+  tawaf(shai i = 1; i < len(arr); i++) {
+    curr.next = ListNode(arr[i], ghaib);
+    curr = curr.next;
+  }
+  radd list;
+}
+
+shai complex_list = list_from_arr([1, "Ammar", 2.3, haqq, batil]);
+qul("Complex list:");
+print_list(complex_list);
+qul("");
+
+// Reversing a linked list
+shai list = list_from_arr([1, 2, 3, 4, 5]);
+
+amal reverse_list(head) {
+  shai prev;
+  shai curr = head;
+  shai next;
+  baynama(curr) {
+    next = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = next;
+  }
+  radd prev;
+}
+
+qul("Original list:");
+print_list(list);
+qul("Reversed list:");
+print_list(reverse_list(list));

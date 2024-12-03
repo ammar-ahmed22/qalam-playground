@@ -1,0 +1,2 @@
+shai name = "Ammar";
+qul("Assalalmu alaikum, " + name + "!");
