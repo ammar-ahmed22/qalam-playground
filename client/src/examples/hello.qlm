@@ -1,2 +1,16 @@
-shai name = "Ammar";
-qul("Assalalmu alaikum, " + name + "!");
+// declaring variables
+rakho naam = "Ammar";
+
+// declaring functions
+kaam salam(naam) {
+    // if-else
+    agar(naam) {
+        bolo("Salam " + naam); // print statement
+    } warna {
+        bolo("Salam dost")
+    }
+}
+
+// calling functions
+salam(khali);
+salam(naam);

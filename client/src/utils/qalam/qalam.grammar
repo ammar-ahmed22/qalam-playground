@@ -58,23 +58,23 @@ ArgumentList { expression ("," expression)* }
 Block { "{" statement* "}" }
 
 @tokens {
-  Shai { "shai" }
-  Bool { "haqq" | "batil" }
-  Amal { "amal" }
-  If { "itha" }
-  Else { "illa" }
-  Null { "ghaib" }
-  Return { "radd" }
-  Not { "la" }
-  Or { "aw" }
-  And { "wa" }
-  For { "tawaf" }
-  While { "baynama" }
-  Self { "nafs" }
-  Super { "ulya "}
+  Shai { "rakho" }
+  Bool { "sach" | "jhoot" }
+  Amal { "kaam" }
+  If { "agar" }
+  Else { "warna" }
+  Null { "khali" }
+  Return { "wapis" }
+  Not { "nahi" }
+  Or { "ya" }
+  And { "aur" }
+  For { "har" }
+  While { "jabtak" }
+  Self { "yeh" }
+  Super { "asli"}
   Name { @asciiLetter (@asciiLetter | @digit | "_")* }
-  Kitab { "kitab" }
-  Ibn { "ibn" }
+  Kitab { "jamat" }
+  Ibn { "shamil" }
   Number { @digit+ }
   String { '"' (!["\\] | "\\" _)* '"' }
   whitespace { $[ \n\r\t] }
