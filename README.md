@@ -4,7 +4,7 @@
 </div>
 
 ## Introduction
-[Qalam](https://github.com/ammar-ahmed22/qalam) is a custom programming language inspired by Arabic/Islamic terminology. This web-based playground lets you edit and execute Qalam code in your browser with a Rust-powered backend and a React/TypeScript frontend.
+[Qalam](https://github.com/ammar-ahmed22/qalam) is a custom programming language inspired by Urdu terminology. This web-based playground lets you edit and execute Qalam code in your browser with a Rust-powered backend and a React/TypeScript frontend.
 
 For more information about Qalam, see the repo [here](https://github.com/ammar-ahmed22/qalam).
 

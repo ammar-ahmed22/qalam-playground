@@ -15,8 +15,6 @@ import Runs from "./components/Runs";
 import ExampleLoader from "./components/ExampleLoader";
 
 // Assets
-import logo from "./assets/QalamLogo.png";
-import newLogo from "./assets/QalamTextLogoUrdu.png";
 import fullLogo from "./assets/QalamFullLogo.png";
 
 // Constants
