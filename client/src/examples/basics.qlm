@@ -1,40 +1,40 @@
 // Declaring a variable
 // Every statement must end with a semi-colon
-shai name = "Ammar";
+rakho name = "Ammar";
 
 // Printing to the console
-qul("Hello " + name); 
+bolo("Hello " + name); 
 
 // Number type
-shai a = 3;
-shai b = 1.4;
-qul(a + b);
+rakho a = 3;
+rakho b = 1.4;
+bolo(a + b);
 
 // String type
-shai last_name = "Ahmed";
-shai full_name = name + " " + last_name;
-qul(full_name);
+rakho last_name = "Ahmed";
+rakho full_name = name + " " + last_name;
+bolo(full_name);
 
 // Boolean type
-shai is_true = haqq;
-shai is_false = batil;
+rakho is_true = sach;
+rakho is_false = jhoot;
 
 // If-else statements
-itha (is_true) {
-  qul("it is true!"); // only this will run
-} illa {
-  qul("it is false!");
+agar (is_true) {
+  bolo("it is true!"); // only this will run
+} warna {
+  bolo("it is false!");
 }
 
 // Null type
-shai null = ghaib;
-shai uninitialized; // uninitialized variables are `ghaib` by default
-qul(null);
-qul(uninitialized);
+rakho null = khali;
+rakho uninitialized; // uninitialized variables are `khali` by default
+bolo(null);
+bolo(uninitialized);
 
 // Arrays
 // Arrays can have any type
-shai arr = [1, 1.1, "Ammar", haqq, ghaib];
+rakho arr = [1, 1.1, "Ammar", sach, khali];
 
 // Indexed assignment
 arr[0] = 3;
@@ -43,25 +43,25 @@ arr[0] = 3;
 push(arr, "I was pushed on");
 
 // Iterating over arrays with a for loop
-tawaf(shai i = 0; i < len(arr); i++) {
-  qul("at index " + str(i) + ": " + str(arr[i]));
+har(rakho i = 0; i < len(arr); i++) {
+  bolo("at index " + str(i) + ": " + str(arr[i]));
 }
 
 // Iterating with while loop
-shai i = 0;
-baynama(i < len(arr)) {
-  qul("in while loop, at index " + str(i) + ": " + str(arr[i]));
+rakho i = 0;
+jabtak(i < len(arr)) {
+  bolo("in while loop, at index " + str(i) + ": " + str(arr[i]));
   i++;
 }
 
 // Function declaration
-amal calc_sum(arr) {
-  shai tot = 0;
-  tawaf(shai i = 0; i < len(arr); i++) {
+kaam calc_sum(arr) {
+  rakho tot = 0;
+  har(rakho i = 0; i < len(arr); i++) {
     tot += arr[i];
   }
-  radd tot;
+  wapis tot;
 }
 
-shai arr = [1, 2, 3, 4, 5, 6];
-qul("Sum of array: " + str(calc_sum(arr)));
+rakho arr = [1, 2, 3, 4, 5, 6];
+bolo("Sum of array: " + str(calc_sum(arr)));

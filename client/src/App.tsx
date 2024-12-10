@@ -16,6 +16,8 @@ import ExampleLoader from "./components/ExampleLoader";
 
 // Assets
 import logo from "./assets/QalamLogo.png";
+import newLogo from "./assets/QalamTextLogoUrdu.png";
+import fullLogo from "./assets/QalamFullLogo.png";
 
 // Constants
 // eslint-disable-next-line 
@@ -90,7 +92,7 @@ export default function App() {
             <div className="flex gap-2 items-center">
               <div className="size-8">
                 <img
-                  src={logo}
+                  src={fullLogo}
                   alt="Example"
                   className="w-full h-full object-contain"
                 />

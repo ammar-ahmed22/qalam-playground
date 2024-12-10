@@ -1,63 +1,63 @@
 // Helper function to print lists
-amal print_list(head) {
-  shai curr = head;
-  shai out = "";
-  baynama(curr) {
+kaam print_list(head) {
+  rakho curr = head;
+  rakho out = "";
+  jabtak(curr) {
     out += str(curr.val);
     out += " -> ";
     curr = curr.next;
   }
-  out += "ghaib";
-  qul(out);
+  out += "khali";
+  bolo(out);
 }
 
 // Using classes for our ListNode's
-kitab ListNode {
-  khalaq(val, next) {
-    nafs.val = val;
-    nafs.next = next;
+jamat ListNode {
+  banao(val, next) {
+    yeh.val = val;
+    yeh.next = next;
   }
 }
 
 // Creating a list
-shai list = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ghaib))));
-qul("Basic list:");
+rakho list = ListNode(1, ListNode(2, ListNode(3, ListNode(4, khali))));
+bolo("Basic list:");
 print_list(list);
-qul("");
+bolo("");
 
 // Creating a list from an array
-amal list_from_arr(arr) {
-  shai list = ListNode(arr[0], ghaib);
-  shai curr = list;
-  tawaf(shai i = 1; i < len(arr); i++) {
-    curr.next = ListNode(arr[i], ghaib);
+kaam list_from_arr(arr) {
+  rakho list = ListNode(arr[0], khali);
+  rakho curr = list;
+  har(rakho i = 1; i < len(arr); i++) {
+    curr.next = ListNode(arr[i], khali);
     curr = curr.next;
   }
-  radd list;
+  wapis list;
 }
 
-shai complex_list = list_from_arr([1, "Ammar", 2.3, haqq, batil]);
-qul("Complex list:");
+rakho complex_list = list_from_arr([1, "Ammar", 2.3, sach, jhoot]);
+bolo("Complex list:");
 print_list(complex_list);
-qul("");
+bolo("");
 
 // Reversing a linked list
-shai list = list_from_arr([1, 2, 3, 4, 5]);
+rakho list = list_from_arr([1, 2, 3, 4, 5]);
 
-amal reverse_list(head) {
-  shai prev;
-  shai curr = head;
-  shai next;
-  baynama(curr) {
+kaam reverse_list(head) {
+  rakho prev;
+  rakho curr = head;
+  rakho next;
+  jabtak(curr) {
     next = curr.next;
     curr.next = prev;
     prev = curr;
     curr = next;
   }
-  radd prev;
+  wapis prev;
 }
 
-qul("Original list:");
+bolo("Original list:");
 print_list(list);
-qul("Reversed list:");
+bolo("Reversed list:");
 print_list(reverse_list(list));

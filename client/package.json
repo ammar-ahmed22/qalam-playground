@@ -24,12 +24,14 @@
     "axios": "^1.7.7",
     "codemirror": "^6.0.1",
     "date-fns": "^4.1.0",
+    "dom-to-image": "^2.6.0",
     "framer-motion": "^11.11.17",
     "lezer": "^0.13.5",
     "prettier": "^3.3.3",
     "raw-loader": "^4.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^7.0.2",
     "react-scripts": "5.0.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.4.15",
@@ -37,7 +39,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "BROWSER=none react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -62,6 +64,8 @@
     ]
   },
   "devDependencies": {
-    "@types/reactour": "^1.18.5"
+    "@types/dom-to-image": "^2.6.7",
+    "@types/reactour": "^1.18.5",
+    "@types/wicg-file-system-access": "^2023.10.5"
   }
 }

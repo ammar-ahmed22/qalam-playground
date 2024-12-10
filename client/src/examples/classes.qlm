@@ -2,50 +2,50 @@
 // Books and movies's are both LibraryItem's so we can use inheritance
 
 // Defining the LibraryItem class
-kitab LibraryItem {
+jamat LibraryItem {
   // Class constructor
-  khalaq(title, year) {
-    // nafs is equivalent to `this` or `self`
-    nafs.title = title;
-    nafs.year = year;
+  banao(title, year) {
+    // yeh is equivalent to `this` or `self`
+    yeh.title = title;
+    yeh.year = year;
   }
 
   get_info() {
-    radd "Title: " + nafs.title + ", Year: " + str(nafs.year);
+    wapis "Title: " + yeh.title + ", Year: " + str(yeh.year);
   }
 }
 
 // Defining a Book
-kitab Book ibn LibraryItem {
-  khalaq(title, year, author, pages) {
-    // ulya is equivalent to `super`
-    ulya.khalaq(title, year);
-    nafs.author = author;
-    nafs.pages = pages;
+jamat Book shamil LibraryItem {
+  banao(title, year, author, pages) {
+    // asli is equivalent to `super`
+    asli.banao(title, year);
+    yeh.author = author;
+    yeh.pages = pages;
   }
 
   // Overriding
   get_info() {
-    radd ulya.get_info() + ", Author: " + nafs.author + ", Pages: " + str(nafs.pages);
+    wapis asli.get_info() + ", Author: " + yeh.author + ", Pages: " + str(yeh.pages);
   }
 }
 
 // Defining a Movie
-kitab Movie ibn LibraryItem {
-  khalaq(title, year, director, run_time) {
-    ulya.khalaq(title, year);
-    nafs.director = director;
-    nafs.run_time = run_time;
+jamat Movie shamil LibraryItem {
+  banao(title, year, director, run_time) {
+    asli.banao(title, year);
+    yeh.director = director;
+    yeh.run_time = run_time;
   }
 
   // Overriding
   get_info() {
-    radd ulya.get_info() + ", Director: " + nafs.director + ", Run time: " + str(nafs.run_time) + " hours";
+    wapis asli.get_info() + ", Director: " + yeh.director + ", Run time: " + str(yeh.run_time) + " hours";
   } 
 }
 
 // Making some library items
-shai items = [];
+rakho items = [];
 push(items, Book(
   "Quran",
   609,
@@ -66,6 +66,6 @@ push(items, Movie(
 ));
 
 // Getting info on all items
-tawaf(shai i = 0; i < len(items); i++) {
-  qul(items[i].get_info());
+har(rakho i = 0; i < len(items); i++) {
+  bolo(items[i].get_info());
 }

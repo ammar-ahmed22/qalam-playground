@@ -7,7 +7,7 @@ kaam salam(naam) {
     agar(naam) {
         bolo("Salam " + naam); // print statement
     } warna {
-        bolo("Salam dost")
+        bolo("Salam dost");
     }
 }
 
