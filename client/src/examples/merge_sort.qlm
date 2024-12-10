@@ -1,68 +1,68 @@
 // Helper function to create an array of random integers
-amal random_arr(length, mini, maxi) {
-  shai res = [];
-  tawaf(shai i = 0; i < length; i++) {
+kaam random_arr(length, mini, maxi) {
+  rakho res = [];
+  har(rakho i = 0; i < length; i++) {
     push(res, random_int(mini, maxi));
   }
-  radd res;
+  wapis res;
 } 
 
-shai length = 10;
-shai mini = -20;
-shai maxi = 20;
-shai arr = random_arr(length, mini, maxi);
-qul("Random array:");
-qul(arr);
+rakho length = 10;
+rakho mini = -20;
+rakho maxi = 20;
+rakho arr = random_arr(length, mini, maxi);
+bolo("Random array:");
+bolo(arr);
 
-amal merge(left, right) {
-  shai l = 0;
-  shai r = 0;
-  shai res = [];
+kaam merge(left, right) {
+  rakho l = 0;
+  rakho r = 0;
+  rakho res = [];
 
-  baynama(l < len(left) && r < len(right)) {
-    itha(left[l] < right[r]) {
+  jabtak(l < len(left) && r < len(right)) {
+    agar(left[l] < right[r]) {
       push(res, left[l]);
       l++;
-    } illa {
+    } warna {
       push(res, right[r]);
       r++;
     }
   }
 
-  baynama(l < len(left)) {
+  jabtak(l < len(left)) {
     push(res, left[l]);
     l++;
   }
 
-  baynama(r < len(right)) {
+  jabtak(r < len(right)) {
     push(res, right[r]);
     r++;
   }
 
-  radd res;
+  wapis res;
 }
 
-amal merge_sort(arr) {
-  itha (len(arr) <= 1) {
-    radd arr;
+kaam merge_sort(arr) {
+  agar (len(arr) <= 1) {
+    wapis arr;
   }
 
-  shai m = floor(len(arr) / 2);
-  shai left = [];
-  shai right = [];
-  tawaf(shai i = 0; i < len(arr); i++) {
-    itha(i < m) {
+  rakho m = floor(len(arr) / 2);
+  rakho left = [];
+  rakho right = [];
+  har(rakho i = 0; i < len(arr); i++) {
+    agar(i < m) {
       push(left, arr[i]);
-    } illa {
+    } warna {
       push(right, arr[i]);
     }
   }
 
-  shai sorted_left = merge_sort(left);
-  shai sorted_right = merge_sort(right);
-  radd merge(sorted_left, sorted_right);
+  rakho sorted_left = merge_sort(left);
+  rakho sorted_right = merge_sort(right);
+  wapis merge(sorted_left, sorted_right);
 }
 
-shai sorted = merge_sort(arr);
-qul("Sorted array:");
-qul(sorted);
+rakho sorted = merge_sort(arr);
+bolo("Sorted array:");
+bolo(sorted);
