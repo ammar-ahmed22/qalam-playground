@@ -5,7 +5,7 @@ on:
       - main
     paths:
       - 'server/**'
-  workflow_disptach:
+  workflow_dispatch:
 jobs:
   deploy:
     name: Deploy server
