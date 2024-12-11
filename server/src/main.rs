@@ -66,7 +66,7 @@ fn unprocessable(_: &Request) -> Json<ErrorResponse> {
 }
 
 fn cors_middleware() -> Cors {
-    let allowed_origins = AllowedOrigins::some_exact(&["http://localhost:3000"]);
+    let allowed_origins = AllowedOrigins::some_exact(&["http://localhost:3000", "https://qalam-playground.web.app"]);
     CorsOptions {
         allowed_origins,
         allowed_methods: ["GET", "POST", "PUT", "DELETE"]
