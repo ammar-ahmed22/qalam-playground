@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./images/QalamFullLogoUrdu.png" width="400" />
+  <img src="./images/QalamFullLogoUrdu.png" width="50" />
   <h1>qalam playground</h1>
   <p>A web-based playground for experimenting with and running Qalam code, powered by Rust and React.</p>
 </div>
