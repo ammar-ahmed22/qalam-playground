@@ -31,7 +31,7 @@ export default function App() {
     headers: {
       "Content-Type": "application/json",
     },
-    url: "http://localhost:8000/run",
+    url: `${process.env.NODE_ENV === "development" ? "http://localhost:8080" : "https://server-purple-silence-4345.fly.dev"}/run`,
   });
 
   const handleRun = () => {
