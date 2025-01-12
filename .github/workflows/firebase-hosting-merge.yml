@@ -22,3 +22,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_QALAM_PLAYGROUND }}'
           channelId: live
           projectId: qalam-playground
+          entryPoint: client
