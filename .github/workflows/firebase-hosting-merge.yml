@@ -15,7 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: yarn install --frozen-lockfile && CI=false yarn build
+        working-directory: client
       - uses: FirebaseExtended/action-hosting-deploy@v0
+        working-directory: client
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_QALAM_PLAYGROUND }}'
