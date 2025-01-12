@@ -1,7 +1,6 @@
 // UI Components
 import { Card, Button, Checkbox } from "@nextui-org/react";
 import { CommandLineIcon, TrashIcon } from "@heroicons/react/24/solid";
-import { FaGithub } from "react-icons/fa";
 
 // Types
 import type { Run, ProcessOutput } from "./utils/types";
@@ -99,9 +98,9 @@ export default function App() {
               <span className="font-bold">Qalam Playground</span>
             </div>
             <div className="flex gap-2">
-            <Button variant="light" size="sm" isIconOnly as="a" href="https://github.com/ammar-ahmed22/qalam" target="_blank">
-                <FaGithub />
-            </Button>
+            {/* <Button variant="light" size="sm" isIconOnly as="a" href="https://github.com/ammar-ahmed22/qalam" target="_blank"> */}
+            {/*     <FaGithub /> */}
+            {/* </Button> */}
             <ExampleLoader 
               onSelect={setCode}
             />
