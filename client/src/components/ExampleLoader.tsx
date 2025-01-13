@@ -1,5 +1,11 @@
 /* eslint-disable import/no-webpack-loader-syntax */
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+} from "@nextui-org/react";
 import hello from "!!raw-loader!../examples/hello.qlm";
 import basics from "!!raw-loader!../examples/basics.qlm";
 import classes from "!!raw-loader!../examples/classes.qlm";
@@ -7,25 +13,22 @@ import linked_list from "!!raw-loader!../examples/linked_list.qlm";
 import merge_sort from "!!raw-loader!../examples/merge_sort.qlm";
 
 export type ExampleLoaderProps = {
-  onSelect: (code: string) => void,
-}
+  onSelect: (code: string) => void;
+};
 
-export default function ExampleLoader({ onSelect } : ExampleLoaderProps) {
-  
+export default function ExampleLoader({ onSelect }: ExampleLoaderProps) {
   return (
     <Dropdown
       classNames={{
-        base: "max-w-sm"
+        base: "max-w-sm",
       }}
-      
     >
       <DropdownTrigger>
-        <Button
-          variant="bordered"
-          size="sm"
-        >Load Example</Button>
+        <Button variant="bordered" size="sm">
+          Load Example
+        </Button>
       </DropdownTrigger>
-      <DropdownMenu variant="faded" >
+      <DropdownMenu variant="faded">
         <DropdownItem
           description="Basic hello world example (Islam inpsired!)."
           onPress={() => onSelect(hello)}
@@ -58,5 +61,5 @@ export default function ExampleLoader({ onSelect } : ExampleLoaderProps) {
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>
-  )
+  );
 }

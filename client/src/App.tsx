@@ -1,6 +1,7 @@
 // UI Components
 import { Card, Button, Checkbox } from "@nextui-org/react";
 import { CommandLineIcon, TrashIcon } from "@heroicons/react/24/solid";
+import { FaGithub, FaRust } from "react-icons/fa6";
 
 // Types
 import type { Run, ProcessOutput } from "./utils/types";
@@ -18,7 +19,7 @@ import ExampleLoader from "./components/ExampleLoader";
 import fullLogo from "./assets/QalamFullLogo.png";
 
 // Constants
-// eslint-disable-next-line 
+// eslint-disable-next-line
 import defaultCode from "!!raw-loader!./examples/hello.qlm";
 
 export default function App() {
@@ -31,7 +32,7 @@ export default function App() {
     headers: {
       "Content-Type": "application/json",
     },
-    url: `${process.env.NODE_ENV === "development" ? "http://localhost:8080" : "https://server-purple-silence-4345.fly.dev"}/run`,
+    url: `${process.env.NODE_ENV === "development" ? "http://localhost:8000" : "https://server-purple-silence-4345.fly.dev"}/run`,
   });
 
   const handleRun = () => {
@@ -84,26 +85,58 @@ export default function App() {
 
   return (
     <div className="h-screen p-4 flex flex-col gap-4 w-full">
-      <div className="grid grid-cols-2 gap-4">
-        <Card className="p-4 h-full gap-4" >
-          <div className="flex justify-between items-center">
-            <div className="flex gap-2 items-center">
-              <div className="size-8">
-                <img
-                  src={fullLogo}
-                  alt="Example"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <span className="font-bold">Qalam Playground</span>
-            </div>
-            <div className="flex gap-2">
-            {/* <Button variant="light" size="sm" isIconOnly as="a" href="https://github.com/ammar-ahmed22/qalam" target="_blank"> */}
-            {/*     <FaGithub /> */}
-            {/* </Button> */}
-            <ExampleLoader 
-              onSelect={setCode}
+      <div className="w-full h-10 flex items-center gap-1 justify-between">
+        <div className="flex gap-2 items-center">
+          <div className="size-8">
+            <img
+              src={fullLogo}
+              alt="Example"
+              className="w-full h-full object-contain"
             />
+          </div>
+          <div className="flex flex-col gap-0">
+            <span className="font-bold">Qalam Playground</span>
+            <span className="text-xs">
+              Made with 🧠 by{" "}
+              <a
+                href="https://ammarahmed.ca"
+                target="_blank"
+                className="hover:underline text-[#6A7864]"
+              >
+                Ammar
+              </a>
+            </span>
+          </div>
+        </div>
+        <div className="flex">
+          <Button
+            variant="light"
+            isIconOnly
+            size="sm"
+            as="a"
+            href="https://github.com/ammar-ahmed22/qalam"
+            target="_blank"
+          >
+            <FaGithub className="size-4" />
+          </Button>
+          <Button
+            variant="light"
+            isIconOnly
+            size="sm"
+            as="a"
+            href="https://crates.io/crates/qalam"
+            target="_blank"
+          >
+            <FaRust className="size-4" />
+          </Button>
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        <Card className="p-4 h-full gap-4">
+          <div className="flex justify-between items-center">
+            <div className="flex gap-2">
+              <ExampleLoader onSelect={setCode} />
+            </div>
             <Button
               endContent={<p>⌘ R</p>}
               variant="faded"
@@ -114,9 +147,12 @@ export default function App() {
             >
               Run
             </Button>
-            </div>
           </div>
-          <Editor value={code} onChange={setCode} height="calc(100vh - 7rem)" />
+          <Editor
+            value={code}
+            onChange={setCode}
+            height="calc(100vh - 11rem)"
+          />
         </Card>
         <Card className="p-4 h-full gap-4">
           <h2 className="text-lg flex items-center gap-2">
